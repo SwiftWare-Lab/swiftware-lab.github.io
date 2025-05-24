@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - SwiftWare Lab</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container site-header">
+            <div class="logo">
+                <h1><a href="index.html">SwiftWare Lab</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="publications.html">Publications</a></li> 
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Our Publications</h2>
+            <p>Explore our research contributions in leading journals and conferences.</p>
+        </div>
+    </section>
+
+    <div class="container main-content">
+        <main class="content-area">
+            <section class="publication-list">
+                <h2>Recent Publications</h2>
+                <div id="publications-list-container">
+                    <p>Loading publications...</p>
+                </div>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div id="news-feed-placeholder">
+                </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year-footer"></span> Your Lab Name. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            <p>Powered by HTML & CSS</p>
+        </div>
+    </footer>
+
+    <script type="text/x-bibtex" id="bibtex-data">
+        @article{smith2023novel,
+          author = {Smith, A. and Johnson, B. and Williams, C.},
+          title = {A Novel Approach to Quantum Entanglement in Low-Temperature Superconductors},
+          journal = {Journal of Advanced Physics},
+          volume = {15},
+          number = {3},
+          pages = {123-145},
+          year = {2023},
+          doi = {10.1234/jap.2023.12345},
+          url = {https://example.com/smith2023.pdf}
+        }
+
+        @inproceedings{jones2022advances,
+          author = {Jones, D. and Brown, E.},
+          title = {Advances in AI-Driven Material Discovery},
+          booktitle = {Proceedings of the International Conference on Materials Science},
+          year = {2022},
+          pages = {56-62},
+          doi = {10.5678/icms.2022.9876},
+          url = {https://example.com/jones2022.pdf}
+        }
+
+        @phdthesis{miller2021bioinspired,
+          author = {Miller, F.},
+          title = {Bio-inspired Robotics for Adaptive Locomotion},
+          school = {University of Advanced Technology},
+          year = {2021},
+          address = {City, Country},
+          url = {https://example.com/miller2021thesis.pdf}
+        }
+
+        @book{davis2020computational,
+          author = {Davis, G. and Garcia, H.},
+          title = {Computational Methods in Fluid Dynamics},
+          publisher = {Science Press},
+          year = {2020},
+          address = {New York, USA},
+          isbn = {978-1-23456-789-0}
+        }
+    </script>
+
+
+    <script>
+        // --- BibTeX Parser Utility (part of bibtexParse.js) ---
+        // You would typically include this from a separate .js file or CDN.
+        // For demonstration, it's included inline.
+        const bibtexParse = (bibtexString) => {
+            const entries = [];
+            const lines = bibtexString.split('\n');
+            let currentEntry = null;
+
+            for (const line of lines) {
+                const trimmedLine = line.trim();
+
+                if (trimmedLine.startsWith('@')) {
+                    if (currentEntry) {
+                        entries.push(currentEntry);
+                    }
+                    const match = trimmedLine.match(/@(\w+)\{([^,]+),/);
+                    if (match) {
+                        currentEntry = {
+                            entryType: match[1].toLowerCase(),
+                            entryKey: match[2].trim(),
+                            fields: {}
+                        };
+                    } else {
+                        currentEntry = null; // Malformed entry start
+                    }
+                } else if (currentEntry && trimmedLine.includes('=')) {
+                    const parts = trimmedLine.split('=');
+                    if (parts.length >= 2) {
+                        const key = parts[0].trim().toLowerCase();
+                        let value = parts.slice(1).join('=').trim();
+                        // Remove braces, quotes, and trailing comma/newline
+                        value = value.replace(/[{}"],?$/, '').replace(/^{"/, '').replace(/^{/, '').trim();
+                        currentEntry.fields[key] = value;
+                    }
+                }
+            }
+            if (currentEntry) {
+                entries.push(currentEntry);
+            }
+            return entries;
+        };
+        // --- End BibTeX Parser Utility ---
+
+
+        // Function to format author names (e.g., "Doe, J. and Smith, A.")
+        function formatAuthors(authorString) {
+            if (!authorString) return '';
+            return authorString.split(' and ').map(author => {
+                const parts = author.split(',').map(p => p.trim());
+                if (parts.length === 2) { // "Last, First"
+                    return `${parts[0]}, ${parts[1][0]}.`;
+                } else { // "First Last"
+                    const nameParts = author.split(' ').map(p => p.trim());
+                    if (nameParts.length > 1) {
+                        return `${nameParts[nameParts.length - 1]}, ${nameParts[0][0]}.`;
+                    }
+                    return author; // Fallback
+                }
+            }).join(', ');
+        }
+
+
+        // Function to render publications
+        function renderPublications() {
+            const bibtexDataElement = document.getElementById('bibtex-data');
+            if (!bibtexDataElement) {
+                document.getElementById('publications-list-container').innerHTML = '<p>No BibTeX data found.</p>';
+                return;
+            }
+
+            const bibtexString = bibtexDataElement.textContent;
+            const publications = bibtexParse(bibtexString);
+            const container = document.getElementById('publications-list-container');
+            container.innerHTML = ''; // Clear "Loading publications..."
+
+            // Sort publications by year, descending
+            publications.sort((a, b) => parseInt(b.fields.year) - parseInt(a.fields.year));
+
+            publications.forEach(pub => {
+                const fields = pub.fields;
+                let title = fields.title || 'Untitled';
+                let authors = formatAuthors(fields.author || 'Unknown Author');
+                let year = fields.year || '';
+                let journalOrBooktitle = '';
+                let pages = fields.pages ? `pp. ${fields.pages}` : '';
+                let volume = fields.volume ? `Vol. ${fields.volume}` : '';
+                let number = fields.number ? `No. ${fields.number}` : '';
+                let doi = fields.doi;
+                let url = fields.url;
+                let publisher = fields.publisher;
+                let school = fields.school;
+                let address = fields.address;
+                let isbn = fields.isbn;
+
+                switch (pub.entryType) {
+                    case 'article':
+                        journalOrBooktitle = fields.journal || 'Unpublished';
+                        break;
+                    case 'inproceedings':
+                    case 'conference':
+                        journalOrBooktitle = fields.booktitle || fields.conference || 'Conference Proceedings';
+                        break;
+                    case 'book':
+                        journalOrBooktitle = publisher || 'Publisher Unknown';
+                        break;
+                    case 'phdthesis':
+                        journalOrBooktitle = `PhD Thesis, ${school || 'University Unknown'}`;
+                        if (address) journalOrBooktitle += `, ${address}`;
+                        break;
+                    // Add more entry types as needed
+                    default:
+                        journalOrBooktitle = fields.journal || fields.booktitle || fields.publisher || '';
+                }
+
+
+                let infoParts = [];
+                if (journalOrBooktitle) infoParts.push(`<strong>${journalOrBooktitle}</strong>`);
+                if (volume) infoParts.push(volume);
+                if (number) infoParts.push(number);
+                if (pages) infoParts.push(pages);
+                if (year) infoParts.push(`(${year})`);
+
+
+                const pubHtml = `
+                    <div class="publication-entry">
+                        <h3>${title}</h3>
+                        <p class="authors">${authors}</p>
+                        <p class="journal-info">${infoParts.join(', ')}.</p>
+                        ${doi ? `<a href="https://doi.org/${doi}" target="_blank" class="doi-link">DOI</a>` : ''}
+                        ${url && !doi ? `<a href="${url}" target="_blank" class="url-link">Full Text</a>` : ''}
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', pubHtml);
+            });
+        }
+
+
+        // JavaScript to load news feed content (reused from index.html)
+        function loadNewsFeed() {
+            fetch('news-feed-snippet.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('news-feed-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading news feed:', error));
+        }
+
+        // Run functions when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsFeed();
+            renderPublications();
+            // Update the year in the footer
+            document.getElementById('current-year-footer').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

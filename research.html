@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - SwiftWare Lab</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container site-header">
+            <div class="logo">
+                <h1><a href="index.html">SwiftWare Lab</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li> <li><a href="people.html">People</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Our Research</h2>
+            <p>Exploring the frontiers of knowledge in [Your Field of Research].</p>
+        </div>
+    </section>
+
+    <div class="container main-content">
+        <main class="content-area">
+            <div class="research-page-layout">
+                <nav class="internal-nav">
+                    <h2>Research Areas</h2>
+                    <ul>
+                        <li><a href="#quantum-computing">Quantum Computing</a></li>
+                        <li><a href="#robotics-ai">Robotics & AI</a></li>
+                        <li><a href="#sustainable-energy">Sustainable Energy</a></li>
+                    </ul>
+                </nav>
+                <div class="research-topics-content">
+                    <section id="quantum-computing">
+                        <h2>Research Topic 1: Quantum Computing Applications</h2>
+                        <p>Our lab is at the forefront of developing practical applications for quantum computing. We explore algorithms for optimization, materials science, and cryptography, leveraging the unique properties of quantum mechanics to solve problems intractable for classical computers.</p>
+                        <p>Current projects include:</p>
+                        <ul>
+                            <li>Developing quantum algorithms for drug discovery simulations.</li>
+                            <li>Investigating quantum machine learning approaches for complex data analysis.</li>
+                            <li>Building robust error-correction protocols for future quantum hardware.</li>
+                        </ul>
+                        <p><em>Key Researchers: Dr. Jane Doe, Alice Smith (PhD Candidate)</em></p>
+                        <a href="#" class="read-more-link">Learn More about this topic &raquo;</a>
+                    </section>
+
+                    <section id="robotics-ai">
+                        <h2>Research Topic 2: Advanced Robotics & Artificial Intelligence</h2>
+                        <p>We combine cutting-edge robotics with advanced artificial intelligence to create autonomous systems that can operate in complex and unstructured environments. Our work spans from robotic manipulation to intelligent sensing and human-robot interaction.</p>
+                        <p>Areas of focus include:</p>
+                        <ul>
+                            <li>Reinforcement learning for robotic control and navigation.</li>
+                            <li>Development of dexterous robotic hands for fine manipulation.</li>
+                            <li>AI-driven perception systems for object recognition and scene understanding.</li>
+                        </ul>
+                        <p><em>Key Researchers: Dr. Bob Johnson, Charlie Brown (PhD Student)</em></p>
+                        <a href="#" class="read-more-link">Learn More about this topic &raquo;</a>
+                    </section>
+
+                    <section id="sustainable-energy">
+                        <h2>Research Topic 3: Sustainable Energy Solutions</h2>
+                        <p>Our research aims to address global energy challenges by developing innovative and sustainable energy technologies. We focus on novel materials and systems for energy generation, storage, and efficiency, with an emphasis on environmental impact.</p>
+                        <p>Projects include:</p>
+                        <ul>
+                            <li>Next-generation solar cell materials and architectures.</li>
+                            <li>Advanced battery technologies for electric vehicles and grid storage.</li>
+                            <li>Smart grid optimization using machine learning techniques.</li>
+                        </ul>
+                        <p><em>Key Researchers: Dr. Jane Doe, Diana Miller (Undergraduate Researcher)</em></p>
+                        <a href="#" class="read-more-link">Learn More about this topic &raquo;</a>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div id="news-feed-placeholder">
+                </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year-footer"></span> Your Lab Name. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            <p>Powered by HTML & CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to load news feed content (reused from other pages)
+        function loadNewsFeed() {
+            fetch('news-feed-snippet.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('news-feed-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading news feed:', error));
+        }
+
+        // JavaScript for smooth scrolling (Optional, but good UX)
+        document.querySelectorAll('.internal-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Run functions when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsFeed();
+            // Update the year in the footer
+            document.getElementById('current-year-footer').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>

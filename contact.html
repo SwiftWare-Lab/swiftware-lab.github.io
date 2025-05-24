@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SwiftWare Lab</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Specific styles for the Contact page if needed */
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .google-map {
+            margin-top: 30px;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures map corners are rounded */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08); /* Consistent shadow */
+        }
+        .google-map iframe {
+            width: 100%;
+            height: 450px; /* Adjust map height as needed */
+            border: 0;
+        }
+
+        /* Responsive adjustments for map */
+        @media (max-width: 768px) {
+            .google-map iframe {
+                height: 300px; /* Shorter map on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container site-header">
+            <div class="logo">
+                <h1><a href="index.html">SwiftWare Lab</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="publications.html">Publications</a></li> 
+                    <li><a href="contact.html">Contact</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>We'd love to hear from you! Reach out with any inquiries.</p>
+        </div>
+    </section>
+
+    <div class="container main-content">
+        <main class="content-area">
+            <section class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>
+                    <strong>Email:</strong> <a href="mailto:info@yourlab.com">info@yourlab.com</a>
+                </p>
+                <p>
+                    <strong>Phone:</strong> [Your Phone Number, e.g., +1 (905) 525-9140]
+                </p>
+                <p>
+                    <strong>Address:</strong><br>
+                    ECE McMaster<br>
+                    ITB Building<br>
+                    1280 Main St W<br>
+                    Hamilton, ON L8S 4L8<br>
+                    Canada
+                </p>
+
+                <div class="google-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2891.956627063133!2d-79.91901872365287!3d43.25997637112002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c9b6348308479%3A0x6e7b1a0e1b0e1b0e!2sITB%20Building%2C%201280%20Main%20St%20W%2C%20Hamilton%2C%20ON%20L8S%204L8%2C%20Canada!5e0!3m2!1sen!2sus!4v1716498000000!5m2!1sen!2sus"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <p style="font-size: 0.9em; color: #777; margin-top: 15px;">
+                    Find us on <a href="https://maps.app.goo.gl/YourGoogleMapsLinkHere" target="_blank" style="color: #007bff;">Google Maps</a>.
+                </p>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <div id="news-feed-placeholder">
+                </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year-footer"></span> Your Lab Name. All rights reserved.</p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+            <p>Powered by HTML & CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript to load news feed content (reused from other pages)
+        function loadNewsFeed() {
+            fetch('news-feed-snippet.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('news-feed-placeholder').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading news feed:', error));
+        }
+
+        // Run functions when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNewsFeed();
+            // Update the year in the footer
+            document.getElementById('current-year-footer').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
