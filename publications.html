@@ -59,45 +59,62 @@
     </footer>
 
     <script type="text/x-bibtex" id="bibtex-data">
-        @article{smith2023novel,
-          author = {Smith, A. and Johnson, B. and Williams, C.},
-          title = {A Novel Approach to Quantum Entanglement in Low-Temperature Superconductors},
-          journal = {Journal of Advanced Physics},
-          volume = {15},
-          number = {3},
-          pages = {123-145},
-          year = {2023},
-          doi = {10.1234/jap.2023.12345},
-          url = {https://example.com/smith2023.pdf}
+        @inproceedings{mekonnen2024machine,
+          author    = {Mahdi Salehi and Kazem Cheshmi}, 
+          title     = {Loop Fusion in Matrix Multiplications with Sparse Dependence}, 
+          booktitle = {Proceedings of The International Conference on Supercomputing (ICS25)},
+          year      = {2025},
+          address   = {Salt Lake City, UT}, 
+          month     = {June}, 
+          url       = {https://www.cheshmi.cc/KazemCheshmi_files/tile_fusion_ics25.pdf},
         }
 
-        @inproceedings{jones2022advances,
-          author = {Jones, D. and Brown, E.},
-          title = {Advances in AI-Driven Material Discovery},
-          booktitle = {Proceedings of the International Conference on Materials Science},
-          year = {2022},
-          pages = {56-62},
-          doi = {10.5678/icms.2022.9876},
-          url = {https://example.com/jones2022.pdf}
+        @inproceedings{mekonnen2024machine,
+          author    = {Delina Mekonnen and Kazem Cheshmi}, 
+          title     = {Machine Learning Applications for Early-Stage Ovarian Cancer Diagnosis}, 
+          booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage, and Analysis (SC24)},
+          year      = {2024},
+          address   = {Atlanta, GA}, 
+          month     = {November}, 
+          note      = {Poster Presentation},
+          url       = {https://sc24.supercomputing.org/proceedings/poster/poster_files/post212s2-file3.pdf},
         }
 
-        @phdthesis{miller2021bioinspired,
-          author = {Miller, F.},
-          title = {Bio-inspired Robotics for Adaptive Locomotion},
-          school = {University of Advanced Technology},
-          year = {2021},
-          address = {City, Country},
-          url = {https://example.com/miller2021thesis.pdf}
-        }
+    @inproceedings{10.1145/3581784.3607097,
+        author = {Cheshmi, Kazem and Strout, Michelle and Mehri Dehnavi, Maryam},
+        title = {Runtime Composition of Iterations for Fusing Loop-carried Sparse Dependence},
+        year = {2023},
+        isbn = {9798400701092},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url = {https://doi.org/10.1145/3581784.3607097},
+        doi = {10.1145/3581784.3607097},
+        abstract = {Dependence between iterations in sparse computations causes inefficient use of memory and computation resources. This paper proposes sparse fusion, a technique that generates efficient parallel code for the combination of two sparse matrix kernels, where at least one of the kernels has loop-carried dependencies. Existing implementations optimize individual sparse kernels separately. However, this approach leads to synchronization overheads and load imbalance due to the irregular dependence patterns of sparse kernels, as well as inefficient cache usage due to their irregular memory access patterns. Sparse fusion uses a novel inspection strategy and code transformation to generate parallel fused code optimized for data locality and load balance. Sparse fusion outperforms the best of unfused implementations using ParSy and MKL by an average of 4.2\texttimes{} and is faster than the best of fused implementations using existing scheduling algorithms, such as LBC, DAGP, and wavefront by an average of 4\texttimes{} for various kernel combinations.},
+        booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+        articleno = {89},
+        numpages = {15},
+        location = {Denver, CO, USA},
+        series = {SC '23}
+        }   
 
-        @book{davis2020computational,
-          author = {Davis, G. and Garcia, H.},
-          title = {Computational Methods in Fluid Dynamics},
-          publisher = {Science Press},
-          year = {2020},
-          address = {New York, USA},
-          isbn = {978-1-23456-789-0}
-        }
+    @article{10.1145/3591302,
+    author = {Wilkinson, Lucas and Cheshmi, Kazem and Dehnavi, Maryam Mehri},
+    title = {Register Tiling for Unstructured Sparsity in Neural Network Inference},
+    year = {2023},
+    issue_date = {June 2023},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {7},
+    number = {PLDI},
+    url = {https://doi.org/10.1145/3591302},
+    doi = {10.1145/3591302},
+    abstract = {Unstructured sparse neural networks are an important class of machine learning (ML) models, as they compact model size and reduce floating point operations. The execution time of these models is frequently dominated by the sparse matrix multiplication (SpMM) kernel, C=A\texttimes{} B, where A is a sparse matrix, and B and C are dense matrices. The unstructured sparsity pattern of matrices in pruned machine learning models along with their sparsity ratio has rendered useless the large class of libraries and systems that optimize sparse matrix multiplications. Reusing registers is particularly difficult because accesses to memory locations should be known statically. This paper proposes Sparse Register Tiling, a new technique composed of an unroll-and-sparse-jam transformation followed by data compression that is specifically tailored to sparsity patterns in ML matrices. Unroll-and-sparse-jam uses sparsity information to jam the code while improving register reuse. Sparse register tiling is evaluated across 2396 weight matrices from transformer and convolutional models with a sparsity range of 60-95\% and provides an average speedup of 1.72\texttimes{} and 2.65\texttimes{} over MKL SpMM and dense matrix multiplication, respectively, on a multicore CPU processor. It also provides an end-to-end speedup of 2.12\texttimes{} for MobileNetV1 with 70\% sparsity on an ARM processor commonly used in edge devices.},
+    journal = {Proc. ACM Program. Lang.},
+    month = jun,
+    articleno = {188},
+    numpages = {26},
+    keywords = {Sparse Matrix, Pruned Neural Networks, Loop Tiling}
+    }
     </script>
 
 
