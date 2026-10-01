@@ -69,20 +69,96 @@
     </footer>
 
     <script type="text/x-bibtex" id="bibtex-data">
-        @inproceedings{mekonnen2024machine,
-          author    = {Mahdi Salehi and Kazem Cheshmi}, 
-          title     = {Loop Fusion in Matrix Multiplications with Sparse Dependence}, 
-          booktitle = {Proceedings of The International Conference on Supercomputing (ICS25)},
+
+        @article{jamalidinan2026arash,
+          title={ARASH: Adaptive Retrieval And Shot Selection for Tabular Prediction},
+          author={Jamalidinan, Samirasadat and Xu, Yue and Cheshmi, Kazem},
+          journal={arXiv preprint arXiv:2608.17856},
+          url = {https://arxiv.org/pdf/2608.17856},
+          year={2026}
+        }
+
+        @inproceedings{10.1145/3712285.3759796,
+            author = {Ma, Da and Salehi, Mohammad Mahdi and Tavakkoli, Amir Mohammad and  Jamalidinan, Samirasadat and  Albkri, Hossein and  Hall,  Mary and  Cheshmi, Kazem},
+            title = {Loop-Carried Dependence Transformation for Parallel Sparse Solvers on GPUs},
+            year = {2026},
+            isbn = {9798400714665},
+            publisher = {Association for Computing Machinery},
+            address = {New York, NY, USA},
+
+            url = {https://www.cheshmi.cc/KazemCheshmi_files/lcd_SC26.pdf},
+            booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+            location = {
+            },
+            series = {SC '26}
+            }
+
+
+
+        @inproceedings{malko2025machine,
+          author    = {Malko Bani Somo and Kazem Cheshmi}, 
+          title     = {Sync-Free GPU Parallelization of Sparse Kernels from Sequential Python Code}, 
+          booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage, and Analysis (SC25) Posters},
           year      = {2025},
-          address   = {Salt Lake City, UT}, 
-          month     = {June}, 
-          url       = {https://www.cheshmi.cc/KazemCheshmi_files/tile_fusion_ics25.pdf},
+          address   = {St Luis, }, 
+          month     = {November}, 
+          note      = {Poster Presentation},
+          url       = {https://sc25.supercomputing.org/proceedings/posters/poster_files/post275s2-file3.pdf},
+        }
+
+        @article{jamalidinan2025floating,
+          title={Floating-Point Data Transformation for Lossless Compression},
+          author={Jamalidinan, Samirasadat and Cheshmi, Kazem},
+          journal={arXiv preprint arXiv:2506.18062},
+          url={https://arxiv.org/pdf/2506.18062},
+          year={2025}
+        }
+
+        @inproceedings{10.1145/3712285.3759796,
+            author = {Ma, Da and Ahmad, Khalid and Cheshmi, Kazem and Sundar, Hari and Hall, Mary},
+            title = {Sparsified Preconditioned Conjugate Gradient Solver on GPUs},
+            year = {2025},
+            isbn = {9798400714665},
+            publisher = {Association for Computing Machinery},
+            address = {New York, NY, USA},
+
+            url = {https://www.cheshmi.cc/KazemCheshmi_files/SPCG_sc25.pdf},
+                        
+            doi = {10.1145/3712285.3759796},
+            abstract = {Preconditioned iterative sparse linear solvers are memory-efficient for large scientific simulations, but the dependences between iterations introduced by preconditioners limit parallelization. This issue is exacerbated on GPUs, which feature many parallel cores. We propose a sparsified preconditioned conjugate gradient (SPCG) solver that increases parallelism by reducing dependences through sparsification, while preserving convergence behavior. We evaluate the proposed SPCG using both ILU(0) and ILU(K) preconditioners on a wide range of symmetric positive definite (SPD) matrices. The proposed SPCG improves the performance of the iterative phase of SPCG by a geometric mean speedup of 1.23 {\texttimes} and 1.65 {\texttimes} over the non-sparsified PCG using ILU(0) and ILU(K), respectively on an NVIDIA A100 GPU. SPCG also yields geometric mean end-to-end speedups of 1.68 {\texttimes} and 3.73 {\texttimes} over the non-sparsified versions with ILU(0) and ILU(K), respectively, on the same platform.},
+            booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis},
+            pages = {602–616},
+            numpages = {15},
+            keywords = {Preconditioned Conjugate Gradient, Incomplete LU Factorization, Sparsification, Wavefront Parallelism, GPU Acceleration},
+            location = {
+            },
+            series = {SC '25}
+            }
+
+
+        @inproceedings{10.1145/3721145.3730427,
+        author = {Salehi, Mohammad Mahdi and Cheshmi, Kazem},
+        title = {Loop Fusion in Matrix Multiplications with Sparse Dependence},
+        year = {2025},
+        isbn = {9798400715372},
+        publisher = {Association for Computing Machinery},
+        address = {New York, NY, USA},
+        url       = {https://www.cheshmi.cc/KazemCheshmi_files/tile_fusion_ics25.pdf}
+        doi = {10.1145/3721145.3730427},
+        abstract = {Fusing parallel loops in consecutive matrix multiplications presents an opportunity for data locality optimization. However, irregular dependencies between iterations across the loops hinder existing compilers from performing this fusion. It also poses challenges for runtime methods, leading to excessive synchronization overhead or limited data reuse. This paper introduces tile fusion, a compiler approach that fuses tiles from the two parallel loops of matrix multiplications with sparse dependence between them. By enhancing data locality and providing balanced workloads, tile fusion accelerates graph neural network training and the solution of sparse linear systems, achieving geometric mean speedups of 2.33 {\texttimes} over PyG and 1.32 {\texttimes} over MKL, respectively.},
+        booktitle = {Proceedings of the 39th ACM International Conference on Supercomputing},
+        pages = {625–639},
+        numpages = {15},
+        keywords = {Loop Transformation, Loop Fusion, Runtime Schedulers, Graph Neural Network},
+        location = {
+        },
+        series = {ICS '25}
         }
 
         @inproceedings{mekonnen2024machine,
           author    = {Delina Mekonnen and Kazem Cheshmi}, 
           title     = {Machine Learning Applications for Early-Stage Ovarian Cancer Diagnosis}, 
-          booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage, and Analysis (SC24)},
+          booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage, and Analysis (SC24) Posters},
           year      = {2024},
           address   = {Atlanta, GA}, 
           month     = {November}, 
@@ -129,9 +205,7 @@
 
 
     <script>
-        // --- BibTeX Parser Utility (part of bibtexParse.js) ---
-        // You would typically include this from a separate .js file or CDN.
-        // For demonstration, it's included inline.
+        // --- BibTeX Parser Utility ---
         const bibtexParse = (bibtexString) => {
             const entries = [];
             const lines = bibtexString.split('\n');
@@ -152,14 +226,13 @@
                             fields: {}
                         };
                     } else {
-                        currentEntry = null; // Malformed entry start
+                        currentEntry = null;
                     }
                 } else if (currentEntry && trimmedLine.includes('=')) {
                     const parts = trimmedLine.split('=');
                     if (parts.length >= 2) {
                         const key = parts[0].trim().toLowerCase();
                         let value = parts.slice(1).join('=').trim();
-                        // Remove braces, quotes, and trailing comma/newline
                         value = value.replace(/[{}"],?$/, '').replace(/^{"/, '').replace(/^{/, '').trim();
                         currentEntry.fields[key] = value;
                     }
@@ -170,28 +243,23 @@
             }
             return entries;
         };
-        // --- End BibTeX Parser Utility ---
 
-
-        // Function to format author names (e.g., "Doe, J. and Smith, A.")
         function formatAuthors(authorString) {
             if (!authorString) return '';
             return authorString.split(' and ').map(author => {
                 const parts = author.split(',').map(p => p.trim());
-                if (parts.length === 2) { // "Last, First"
+                if (parts.length === 2) {
                     return `${parts[0]}, ${parts[1][0]}.`;
-                } else { // "First Last"
+                } else {
                     const nameParts = author.split(' ').map(p => p.trim());
                     if (nameParts.length > 1) {
                         return `${nameParts[nameParts.length - 1]}, ${nameParts[0][0]}.`;
                     }
-                    return author; // Fallback
+                    return author;
                 }
             }).join(', ');
         }
 
-
-        // Function to render publications
         function renderPublications() {
             const bibtexDataElement = document.getElementById('bibtex-data');
             if (!bibtexDataElement) {
@@ -202,9 +270,8 @@
             const bibtexString = bibtexDataElement.textContent;
             const publications = bibtexParse(bibtexString);
             const container = document.getElementById('publications-list-container');
-            container.innerHTML = ''; // Clear "Loading publications..."
+            container.innerHTML = '';
 
-            // Sort publications by year, descending
             publications.sort((a, b) => parseInt(b.fields.year) - parseInt(a.fields.year));
 
             publications.forEach(pub => {
@@ -221,7 +288,6 @@
                 let publisher = fields.publisher;
                 let school = fields.school;
                 let address = fields.address;
-                let isbn = fields.isbn;
 
                 switch (pub.entryType) {
                     case 'article':
@@ -238,11 +304,9 @@
                         journalOrBooktitle = `PhD Thesis, ${school || 'University Unknown'}`;
                         if (address) journalOrBooktitle += `, ${address}`;
                         break;
-                    // Add more entry types as needed
                     default:
                         journalOrBooktitle = fields.journal || fields.booktitle || fields.publisher || '';
                 }
-
 
                 let infoParts = [];
                 if (journalOrBooktitle) infoParts.push(`<strong>${journalOrBooktitle}</strong>`);
@@ -251,22 +315,30 @@
                 if (pages) infoParts.push(pages);
                 if (year) infoParts.push(`(${year})`);
 
+                let formattedDoiLink = '';
+                if (doi) {
+                    const doiUrl = doi.startsWith('http') ? doi : `https://doi.org/${doi}`;
+                    formattedDoiLink = `<a href="${doiUrl}" target="_blank" class="doi-link">DOI</a>`;
+                }
+
+                let formattedUrlLink = '';
+                if (url) {
+                    formattedUrlLink = `<a href="${url}" target="_blank" class="url-link">Full Text</a>`;
+                }
 
                 const pubHtml = `
                     <div class="publication-entry">
                         <h3>${title}</h3>
                         <p class="authors">${authors}</p>
                         <p class="journal-info">${infoParts.join(', ')}.</p>
-                        ${doi ? `<a href="https://doi.org/${doi}" target="_blank" class="doi-link">DOI</a>` : ''}
-                        ${url && !doi ? `<a href="${url}" target="_blank" class="url-link">Full Text</a>` : ''}
+                        ${formattedDoiLink}
+                        ${formattedUrlLink}
                     </div>
                 `;
                 container.insertAdjacentHTML('beforeend', pubHtml);
             });
         }
 
-
-        // JavaScript to load news feed content (reused from index.html)
         function loadNewsFeed() {
             fetch('news-feed-snippet.html')
                 .then(response => response.text())
@@ -276,11 +348,9 @@
                 .catch(error => console.error('Error loading news feed:', error));
         }
 
-        // Run functions when the page loads
         document.addEventListener('DOMContentLoaded', function() {
             loadNewsFeed();
             renderPublications();
-            // Update the year in the footer
             document.getElementById('current-year-footer').textContent = new Date().getFullYear();
         });
     </script>
